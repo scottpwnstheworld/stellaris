@@ -1,0 +1,84 @@
+special_project = {
+	key = "FIREFLIES_SIGNAL_PROJECT"
+	cost = 0
+	days_to_research = 1
+	tech_department = society_technology
+	picture = GFX_evt_landing_ship
+	
+	location = no
+
+	event_chain = FIREFLIES_CHAIN_1
+	event_scope = planet_event
+
+	on_success = {
+		planet_event = { id = colony.2061 } 
+	}
+	
+	on_fail = {
+	}
+}
+
+special_project = {
+	key = "BURNS_CAULFIELD_PROJECT"
+	cost = 0
+	days_to_research = 5
+	
+	event_scope = ship_event
+	event_chain = FIREFLIES_CHAIN_1
+	requirements = {
+		shipclass_science_ship = 1
+		leader = scientist
+		#skill = 3
+	}
+	
+	on_success = {
+		ship_event = { id = colony.2062 }
+	}
+	on_fail = { }
+}
+
+special_project = {
+	key = "FIND_RORSTAR_PROJECT"
+	cost = 0
+	days_to_research = 5
+	
+	event_scope = planet_event
+}
+
+special_project = {
+	key = "SCRAMBLER_STUDY_PROJECT_1"
+	cost = 0
+	days_to_research = 5
+	
+	event_scope = ship_event
+	event_chain = FIREFLIES_CHAIN_1
+
+	same_option_group_as = { SCRAMBLER_STUDY_PROJECT_2 }
+	
+	on_success = {
+		ship_event = { id = colony.20702 }
+		event_target:blind_country = { country_event = { id = colony.2070 } }
+		owner = { country_event = { id = colony.2070 } }
+		from = { country_event = { id = colony.2070 } }
+		fromfrom = { country_event = { id = colony.2070 } }
+		this = { country_event = { id = colony.2070 } }
+	}
+	on_fail = { }
+}
+
+special_project = {
+	key = "SCRAMBLER_STUDY_PROJECT_2"
+	cost = 0
+	days_to_research = 5
+	
+	event_scope = ship_event
+	event_chain = FIREFLIES_CHAIN_1
+
+	same_option_group_as = { SCRAMBLER_STUDY_PROJECT_1 }
+	
+	on_success = {
+		ship_event = { id = colony.20702 }
+		#owner = { country_event = { id = colony.2070 } }
+	}
+	on_fail = { }
+}

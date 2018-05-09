@@ -1,0 +1,433 @@
+############################################
+# stuff                                    #
+############################################
+
+namespace = colony
+
+@tier1unityreward = 6
+@tier1unitymin = 100
+@tier1unitymax = 500
+@tier2unityreward = 12
+@tier2unitymin = 150
+@tier2unitymax = 1000
+@tier3unityreward = 18
+@tier3unitymin = 250
+@tier3unitymax = 1500
+@tier4unityreward = 24
+@tier4unitymin = 350
+@tier4unitymax = 2000
+@tier5unityreward = 48
+@tier5unitymin = 700
+@tier5unitymax = 4000
+
+# Starter event, firefall
+country_event = {
+	id = colony.2059
+	title = colony.2059.name
+	desc = colony.2059.desc
+	
+	picture = GFX_evt_alien_nature
+	show_sound = event_alien_nature
+	location = root
+	
+	# B4Publish
+	is_triggered_only = yes
+	# mean_time_to_happen = {
+		# months = 480
+	# }
+	#DONE
+	
+	trigger = {
+		is_ai = no
+		NOT = { has_authority = auth_machine_intelligence }
+	}
+	
+	immediate = {
+		save_event_target_as = blind_country
+		hidden_effect = {
+			random_owned_planet = {
+				limit = {
+						# B4Publish
+						is_asteroid = no
+						is_capital = yes
+						#DONE
+				}
+				save_event_target_as = burns_caulfield_asteroid
+			}
+		}
+	}
+	option = {
+		name = colony.2059.a
+		
+		capital_scope = {
+			planet_event = { id = colony.2060 days = 5}
+		}
+	}
+}
+
+planet_event = {	
+
+	id = colony.2060
+	title = colony.2060.name
+	desc = colony.2060.desc
+	picture = GFX_evt_alien_nature
+	show_sound = event_alien_nature
+	location = root
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	immediate = {
+		set_planet_flag = colony_event
+		
+	}
+	
+	option = {
+		name = colony.2060.a
+		begin_event_chain = {
+			event_chain = FIREFLIES_CHAIN_1
+			target = ROOT
+		}
+		enable_special_project = {
+			name = FIREFLIES_SIGNAL_PROJECT
+			location = this
+			owner = root
+		}
+	}
+	option = {
+		name = colony.2060.b
+		owner = { end_event_chain = FIREFLIES_CHAIN_1 }
+	}
+}
+
+# Burns caulfield examination event (after special project)
+planet_event = {
+	id = colony.2061
+	title = colony.2061.name
+	desc = colony.2061.desc
+	picture = GFX_evt_satellite_in_orbit
+	show_sound = event_scanner
+
+	is_triggered_only = yes
+
+	option = {
+		name = colony.2061.a
+	
+		enable_special_project = {
+				name = BURNS_CAULFIELD_PROJECT
+				location = event_target:burns_caulfield_asteroid
+				owner = root
+		}
+	}
+	
+	option = {
+		name = colony.2061.b
+		
+		#enable_special_project = {
+		#	name = 
+		#}
+	}
+}
+
+# Hidden link for ship -> country event
+ship_event = {
+	id = colony.2062
+	title = colony.2062.name
+	desc = colony.2062.desc
+	picture = GFX_evt_satellite_in_orbit
+	show_sound = event_scanner
+	
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = colony.2062.a
+	}
+	immediate = {
+		save_event_target_as = burns_examiner_target
+		# Destroy the ship B4Publish
+		#kill_leader = { type = scientist show_notification = no}
+		#fleet = { destroy_fleet = this }
+		owner = {
+			random_list = {
+				50 = { owner = { country_event = { id = colony.2063 days = 10} } }
+				50 = { owner = { country_event = { id = colony.2064 days = 10} } }
+			}
+		}
+	}
+}
+
+#Found the scrambler system - ship not destroyed
+country_event = {
+	id = colony.2063
+	title = colony.2063.name
+	desc = colony.2063.desc
+	picture = GFX_evt_satellite_in_orbit
+	show_sound = event_scanner
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	after = {
+		hidden_effect = {
+			random_planet = {
+				limit = { has_planet_flag = rorschach_planet }
+				save_event_target_as = rorschach_target
+			}
+		}
+	}
+	
+	option = {
+		name = colony.2061.a
+		random_system_within_border = {
+			spawn_system = {
+				min_distance = 20
+				max_distance = 50
+				initializer = "scrambler_system"
+			}
+		}
+		hidden_effect = { country_event = { id = colony.20465 } }
+	}
+}
+
+#Found the scrambler system - ship destroyed
+country_event = {
+	id = colony.2064
+	title = colony.2064.name
+	desc = colony.2064.desc
+	picture = GFX_evt_satellite_in_orbit
+	show_sound = event_scanner
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	after = {
+		hidden_effect = {
+			random_planet = {
+				limit = { has_planet_flag = rorschach_planet }
+				save_event_target_as = rorschach_target
+			}
+		}
+	}
+	
+	option = {
+		name = colony.2061.a
+		random_system_within_border = {
+			spawn_system = {
+				min_distance = 20
+				max_distance = 50
+				initializer = "scrambler_system"
+			}
+		}
+		hidden_effect = { country_event = { id = colony.20465 } }
+	}
+}
+
+country_event = {
+	id = colony.20465
+	title = colony.20465.name
+	desc = colony.20465.desc
+	
+	is_triggered_only = yes
+	hide_window = yes
+	
+	immediate = {
+		hidden_effect = {
+			create_country = {
+				name = "Scramblers"
+				type = neutral_scrambler
+				species = root.owner
+				name_list = "PRT1"
+				flag = {
+					background = {
+						category = "backgrounds"
+						file = "00_solid.dds"
+					}
+					colors ={
+						"black"
+						"black"
+						"null"
+						"null"
+					}
+				}
+				effect = {
+					save_event_target_as = scrambler_country
+				}
+			}
+			event_target:scrambler_country = {
+				create_fleet = {
+					name = "Rorschach"
+					effect = {
+						set_owner = PREV
+						create_ship = {
+							name = random
+							design = "NAME_Rorschach_Station"
+							graphical_culture = "pirate_01"
+						}
+						set_location = event_target:rorschach_target
+					}
+				}
+			}
+		}
+	}
+}
+
+
+# Initial contact w/ scramblers
+ship_event = {
+	id = colony.2065
+	title  = colony.2065.name
+	desc = colony.2065.desc
+	
+	show_sound = event_conversation
+	diplomatic = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = colony.2065.a
+		ship_event = { id = colony.2066 }
+	}
+	option = {
+		name = colony.2065.b
+		ship_event = { id = colony.2067 }
+	}
+	
+	#Start projects section
+	option = {
+		name = colony.2065.c
+		enable_special_project = {
+			name = SCRAMBLER_STUDY_PROJECT_1
+			location = event_target:rorschach_target
+			owner = root
+		}
+		enable_special_project = {
+			name = SCRAMBLER_STUDY_PROJECT_2
+			location = event_target:rorschach_target
+			owner = FROM
+		}
+	}
+	
+	option = {
+		name = colony.2065.z
+	}
+}
+# Response to 'who are you'
+ship_event = {
+	id = colony.2066
+	title  = colony.2066.name
+	desc = colony.2066.desc
+	
+	show_sound = event_conversation
+	diplomatic = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = colony.2065.a
+		ship_event = { id = colony.2066 }
+	}
+	option = {
+		name = colony.2065.b
+		ship_event = { id = colony.2067 }
+	}
+	#Start projects section
+	option = {
+		name = colony.2065.c
+		enable_special_project = {
+			name = SCRAMBLER_STUDY_PROJECT_1
+			location = event_target:rorschach_target
+			owner = root
+		}
+		enable_special_project = {
+			name = SCRAMBLER_STUDY_PROJECT_2
+			location = event_target:rorschach_target
+			owner = root.owner
+		}
+	}
+	option = {
+		name = colony.2065.z
+	}
+}
+
+ship_event = {
+	id = colony.2067
+	title  = colony.2067.name
+	desc = colony.2067.desc
+	
+	show_sound = event_conversation
+	diplomatic = yes
+	is_triggered_only = yes
+	
+	
+	option = {
+		name = colony.2065.a
+		ship_event = { id = colony.2066 }
+	}
+	option = {
+		name = colony.2065.b
+		ship_event = { id = colony.2067 }
+	}
+	
+	#Start projects section
+	option = {
+		name = colony.2065.c
+		enable_special_project = {
+			name = SCRAMBLER_STUDY_PROJECT_1
+			location = event_target:rorschach_target
+			owner = root
+		}
+		enable_special_project = {
+			name = SCRAMBLER_STUDY_PROJECT_2
+			location = event_target:rorschach_target
+			owner = root
+		}
+	}
+	option = {
+		name = colony.2065.z
+	}
+}
+
+country_event = {
+	id = colony.2070
+	title = colony.2070.name
+	desc = colony.2070.desc
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = colony.2070.a
+		country_event = { id = colony.2071 days = 5 }
+	}
+}
+
+ship_event = {
+	id = colony.20702
+	title = colony.2070.name
+	desc = colony.2070.desc
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = colony.2070.a
+		owner = { country_event = { id = colony.2071 days = 5 } }
+	}
+}
+
+country_event = {
+	id = colony.2071
+	title = colony.2071.name
+	desc = colony.2071.desc
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = colony.2071.a
+	}
+	option = {
+		name = colony.2071.b
+	}
+	option = {
+		name = colony.2071.c
+	}
+}
+	

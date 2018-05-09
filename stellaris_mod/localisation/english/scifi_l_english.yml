@@ -1,0 +1,80 @@
+﻿l_english:
+ colony.2059.name:0 "Strange Vessels"
+ colony.2059.desc:0 "Without warning, alien objects appear in the atmosphere over [Root.Capital.GetName]. "
+ colony.2059.a:0 "Best keep watch..."
+ ### EVENT CHAINS
+ colony.2060.name:0 "Fire In The Sky"
+ colony.2060.desc:0 "The coloniists on [Root.Capital.GetName] look up in awe as- all at once- the alien vessels ignite.\n\nAs they burn, they scream across a huge portion of the electromagnetic spectrum, overloading scanners across the entire planet."
+ colony.2060.a:0 "We can't shake the feeling of having been scanned."
+ colony.2060.b:0 "Scan away, we have nothing to hide."
+ 
+ colony.2061.name:0 "The Source"
+ colony.2061.desc:0 "Tracing the signal coming out of the scanners, our scientists identified a previously unknown star system which the signal appears to be tracking."
+ colony.2061.a:0 "Send a team at once"
+ colony.2061.b:0 "Prepare the fleets- we won't let them get away with this"
+ 
+ colony.2062.name:0 "A Disappearance"
+ colony.2062.desc:0 "No sooner has [Root.GetName] fixed its sensors on the asteroid than all  of its on-board systems go dark. Neighboring systems report a sudden spike in gamma radiation, and all contact has been lost with the crew of [Root.GetName]. Little else is known."
+ colony.2062.a:0 "shit son"
+ 
+ colony.2063.name:0 "Tragic fate"
+ colony.2063.desc:0 "An emergency transmitter has been recovered from the fleet surveying Burns-Caulfield. The asteroid detonated immediately upon contact. All crew are missing, presumed dead. Despite this, they were able to transmit a set of coordinates, towards which the asteroid had been reflecting the signal from the Fireflies."
+ colony.2063.a:0 "Let's check it out"
+ 
+ colony.2064.name:0 "Response!"
+ colony.2064.desc:0 "[Root.GetShipName] is intact! The asteroid they were sent to survey was triggered to suddenly detonate upon contact. By sheer circumstance, the ship managed to avoid destruction. Even more fortuitous, [Root.GetShipName] has returned to our capital with coordinates towards which the asteroid was reflecting the signal from the Fireflies."
+ colony.2064.a:0 "Let's check it out"
+ 
+ colony.2065.name:0 "Communication from ???"
+ colony.2065.desc:0 "Greetings [Root.GetName]! We are rorschach. We are here performing routine maintenance. Our ship gives off some radiation that would be dangerous to your species, so we advise keeping a safe distance.\n\nThat being said, we would surely appreciate some resources to commplete our repairs."
+ colony.2065.a:0 "Who are you?"
+ colony.2065.b:0 "Why did you scan us?"
+ colony.2065.c:0 "This won't stand. Tell us what you're doing or we'll find out on our own."
+ colony.2065.z:0 "Close all channels, leave them be."
+ 
+ colony.2066.name:0 "Communication from ???"
+ colony.2066.desc:0 "As we previously stated, our ship is called rorschach. We are relatively uninterested in the doings of the [Root.GetName], or your ilk. All we ask is to be left alone while we effect our repairs.\n\nAnd maybe some resources to assist, if you can spare them."
+ 
+ colony.2067.name:0 "Communication from ???"
+ colony.2067.desc:0 "I'm sorry? You must be thinking of someone else. We generally avoid interfering with other species."
+ 
+ colony.2070.name:0 "Curious"
+ colony.2070.desc:0 "The scientist [Root.GetName] has noticed something odd...\n\n Despite appearing to understand and communicate, Rorscach does not seem to correlate those words with real world concepts. Using some subtly nonsensical phrases, they were able to catch Rorscach contradticting itself, agreeing to impossibilities and paradoxes.\n\n[Root.Leader.GetName] has a sudden and unshakeable sensation of having attempted intelligent conversation with a parrot."
+ colony.2070.a:0 "We don't take this deception lightly, prepare a fleet"
+ colony.2070.b:0 "Open comms, there must be some explanation"
+ colony.2070.c:0 "What a strange species..."
+ 
+ rorschach_anomaly:0 "A Foreign Vessel"
+ rorschach_anomaly_desc:0 "A station appears to have been concealed in the oribital shadow of the moon around Big Ben. We should investigate."
+  
+ FIREFLIES_CHAIN_1_title:0 "Fireflies over [Owner.Capital.GetName]"
+ FIREFLIES_CHAIN_1_desc:0 "Alien vessels have appeared over [Root.Capital.GetName]"
+ 
+ FIREFLIES_SIGNAL_PROJECT:0 "Trace the signal"
+ FIREFLIES_SIGNAL_PROJECT_DESC:0 "A signal has been correlated with the mysterious vessels. If we dedicate some research, we can track the signal direction and hope to identify it's destination."
+ 
+ BURNS_CAULFIELD_PROJECT:0 "Examine the asteroid"
+ BURNS_CAULFIELD_PROJECT_DESC:0 "We need to get a ship to the asteroid, to see what their intentions were in scanning us"
+ 
+ SCRAMBLER_STUDY_PROJECT_1:0 "Infiltrate the ship"
+ SCRAMBLER_STUDY_PROJECT_1_DESC:0 "We need to know why they scanned us- sending a crew aboard their vessel could give us a better understanding of their intentions"
+ SCRAMBLER_STUDY_PROJECT_2:0 "Investigate their comms"
+ SCRAMBLER_STUDY_PROJECT_2_DESC:0 "A few of our citizens have noticed some strange patterns in the communications from Rorschach. With some focused questioning, we might be able to determine more about their goals."
+ 
+ scrambler_station:0 "Rorschach"
+ pirate_01_scrambler_station_entity:0 "Rorschach"
+ scrambler_station_plural:0 "Rorschach"
+ 
+ scrambler_cruiser:0 "Rorschach Emissary"
+ pirate_01_scrambler_cruiser_entity:0 "Rorschach Emissary"
+ scrambler_cruiser_plural:0 "Emissaries"
+ 
+ firefly:0 "Firefly"
+ pirate_01_firefly_entity:0 "Firefly"
+ firefly_plural:0 "Fireflies"
+ 
+ 
+ 
+ 
+ 
+ 

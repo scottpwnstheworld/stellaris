@@ -1,0 +1,36 @@
+anomaly = {
+	event = colony.2064
+	category = "rorschach_anomaly"
+	
+	potential = {
+		always = yes
+	}
+}
+
+
+# Black Hole Readings
+anomaly_category = {
+	key = "rorschach_anomaly"
+	desc = "rorschach_anomaly_desc"
+	picture = GFX_evt_black_hole
+	level = 1
+
+	spawn_chance = {
+		modifier = {
+			add = 100
+			has_planet_flag = rorschach_planet
+		}
+	}
+	
+	on_success = {
+		ship_event = { id = colony.2065 }
+	}
+
+	on_fail = {
+		ship_event = { id = colony.2065 }
+	}
+
+	on_critical_fail = {
+		ship_event = { id = colony.2065 }
+	}
+}
